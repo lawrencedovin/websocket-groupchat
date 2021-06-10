@@ -23,8 +23,21 @@ ws.onopen = function(evt) {
 ws.onmessage = function(evt) {
   console.log("message", evt);
 
+  // sends back name of user and the data from the input box as text
+  // to the server as evt
+
+  // msg formats the evt.data to JSON format
   let msg = JSON.parse(evt.data);
+
+  // msg = {
+  //   name: "taco"
+  //   text: "taco bell #1"
+  //   type: "chat"
+  // }
+
   let item;
+
+  console.log(msg);
 
   if (msg.type === "note") {
     item = $(`<li><i>${msg.text}</i></li>`);
@@ -63,6 +76,7 @@ $('form').submit(function (evt) {
 
   let data = {type: "chat", text: $("#m").val()};
   ws.send(JSON.stringify(data));
+  // sends the data from the input box to the server
 
   $('#m').val('');
 });

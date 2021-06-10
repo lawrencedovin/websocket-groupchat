@@ -30,6 +30,7 @@ class ChatUser {
 
   handleJoin(name) {
     this.name = name;
+    // join this member to the members list
     this.room.join(this);
     this.room.broadcast({
       type: 'note',

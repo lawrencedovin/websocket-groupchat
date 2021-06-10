@@ -48,6 +48,7 @@ class Room {
 
   broadcast(data) {
     for (let member of this.members) {
+      // sends the JSONified message passed by the ChatUser
       member.send(JSON.stringify(data));
     }
   }
